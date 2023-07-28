@@ -1,0 +1,42 @@
+# macOS
+.DS_Store
+
+# Xcode
+*.pbxproj
+*.xcworkspace
+xcuserdata/
+**/xcshareddata/
+**/*.xccheckout
+
+# Android
+**/android/gradle.properties
+**/android/local.properties
+**/android/.gradle
+**/android/build/
+**/android/app/build/
+
+# Node.js
+**/node_modules/
+**/ios/Pods/
+**/ios/Podfile.lock
+**/android/app/libs/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Miscellaneous
+/.expo
+/.expo-shared
+npm-debug.log*
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env
+vendor/
+
+# IDE
+.idea/
+.vscode/
