@@ -9,10 +9,11 @@ module.exports = {
         extensions: ['.js', '.json'],
         alias: {
           '@': './src',
-          types: './@types',
+          '\types': './@types',
         },
       },
     ],
+    // 'nativewind/babel',
     'inline-dotenv',
     'react-native-reanimated/plugin', // needs to be last
   ],
