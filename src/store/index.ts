@@ -1,20 +1,20 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
+import { MMKV } from 'react-native-mmkv';
 import {
-  persistReducer,
-  persistStore,
   FLUSH,
-  REHYDRATE,
   PAUSE,
   PERSIST,
+  persistReducer,
+  persistStore,
   PURGE,
   REGISTER,
+  REHYDRATE,
   Storage,
 } from 'redux-persist';
-import { MMKV } from 'react-native-mmkv';
 
-import { api } from '../services/api';
 import theme from './theme';
+import { api } from '../services/api';
 
 const reducers = combineReducers({
   theme,
@@ -27,11 +27,11 @@ export const reduxStorage: Storage = {
     storage.set(key, value);
     return Promise.resolve(true);
   },
-  getItem: key => {
+  getItem: (key) => {
     const value = storage.getString(key);
     return Promise.resolve(value);
   },
-  removeItem: key => {
+  removeItem: (key) => {
     storage.delete(key);
     return Promise.resolve();
   },
@@ -47,7 +47,7 @@ const persistedReducer = persistReducer(persistConfig, reducers);
 
 const store = configureStore({
   reducer: persistedReducer,
-  middleware: getDefaultMiddleware => {
+  middleware: (getDefaultMiddleware) => {
     const middlewares = getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
