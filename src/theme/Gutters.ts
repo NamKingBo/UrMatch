@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+
 import { Gutters, ThemeVariables } from '../../@types/theme';
 
 /**

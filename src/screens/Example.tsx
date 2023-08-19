@@ -1,35 +1,29 @@
 import React, { useEffect } from 'react';
 import {
-  View,
   ActivityIndicator,
+  Alert,
+  Image,
+  ScrollView,
   Text,
   TouchableOpacity,
-  ScrollView,
-  Image,
-  Alert,
+  View,
 } from 'react-native';
-import { useDispatch } from 'react-redux';
+
+import i18next from 'i18next';
 import { useTranslation } from 'react-i18next';
+import { useDispatch } from 'react-redux';
+
 import Brand from '@/components/Brand/Brand';
 import { useTheme } from '@/hooks';
 import { useLazyFetchOneQuery } from '@/services/modules/users';
 import { changeTheme, ThemeState } from '@/store/theme';
-import i18next from 'i18next';
 
 const Example = () => {
   const { t } = useTranslation(['example', 'welcome']);
-  const {
-    Common,
-    Fonts,
-    Gutters,
-    Layout,
-    Images,
-    darkMode: isDark,
-  } = useTheme();
+  const { Common, Fonts, Gutters, Layout, Images, darkMode: isDark } = useTheme();
   const dispatch = useDispatch();
 
-  const [fetchOne, { data, isSuccess, isLoading, isFetching }] =
-    useLazyFetchOneQuery();
+  const [fetchOne, { data, isSuccess, isLoading, isFetching }] = useLazyFetchOneQuery();
 
   useEffect(() => {
     if (isSuccess && data?.name) {
@@ -178,23 +172,14 @@ const Example = () => {
       >
         <View>
           <Text style={[Fonts.titleRegular]}>{t('welcome:title')}</Text>
-          <Text
-            style={[Fonts.textBold, Fonts.textRegular, Gutters.regularBMargin]}
-          >
+          <Text style={[Fonts.textBold, Fonts.textRegular, Gutters.regularBMargin]}>
             {t('welcome:subtitle')}
           </Text>
-          <Text style={[Fonts.textSmall, Fonts.textLight]}>
-            {t('welcome:description')}
-          </Text>
+          <Text style={[Fonts.textSmall, Fonts.textLight]}>{t('welcome:description')}</Text>
         </View>
 
         <View
-          style={[
-            Layout.row,
-            Layout.justifyContentBetween,
-            Layout.fullWidth,
-            Gutters.smallTMargin,
-          ]}
+          style={[Layout.row, Layout.justifyContentBetween, Layout.fullWidth, Gutters.smallTMargin]}
         >
           <TouchableOpacity
             style={[Common.button.circle, Gutters.regularBMargin]}
@@ -222,9 +207,7 @@ const Example = () => {
 
           <TouchableOpacity
             style={[Common.button.circle, Gutters.regularBMargin]}
-            onPress={() =>
-              onChangeLanguage(i18next.language === 'fr' ? 'en' : 'fr')
-            }
+            onPress={() => onChangeLanguage(i18next.language === 'fr' ? 'en' : 'fr')}
           >
             <Image
               source={Images.icons.translate}

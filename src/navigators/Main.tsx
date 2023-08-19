@@ -1,6 +1,8 @@
 import React from 'react';
-import Example from '@/screens/Example';
+
 import { createStackNavigator } from '@react-navigation/stack';
+
+import Example from '@/screens/Example';
 
 const Stack = createStackNavigator();
 
@@ -8,7 +10,7 @@ const Stack = createStackNavigator();
 const MainNavigator = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Home" component={Example} />
+      <Stack.Screen name='Home' component={Example} />
     </Stack.Navigator>
   );
 };

@@ -1,34 +1,24 @@
 import { useColorScheme } from 'react-native';
-import { useSelector } from 'react-redux';
+
 import { DarkTheme, DefaultTheme } from '@react-navigation/native';
+import { useSelector } from 'react-redux';
+
 import {
-  Common,
-  Fonts,
-  Gutters,
-  Images,
-  Layout,
-  themes,
-  DefaultVariables,
-} from '../theme';
-import { ThemeState } from '../store/theme';
-import {
-  ThemeVariables,
   Theme,
-  ThemeNavigationTheme,
   ThemeNavigationColors,
+  ThemeNavigationTheme,
+  ThemeVariables,
 } from '../../@types/theme';
+import { ThemeState } from '../store/theme';
+import { Common, DefaultVariables, Fonts, Gutters, Images, Layout, themes } from '../theme';
 
 export default function () {
   // Get the scheme device
   const colorScheme = useColorScheme();
 
   // Get current theme from the store
-  const currentTheme = useSelector(
-    (state: { theme: ThemeState }) => state.theme.theme,
-  );
-  const isDark = useSelector(
-    (state: { theme: ThemeState }) => state.theme.darkMode,
-  );
+  const currentTheme = useSelector((state: { theme: ThemeState }) => state.theme.theme);
+  const isDark = useSelector((state: { theme: ThemeState }) => state.theme.darkMode);
   const darkMode = isDark === null ? colorScheme === 'dark' : isDark;
 
   let variables = {};
@@ -118,12 +108,12 @@ const mergeVariables = (
   darkThemeConfig: Partial<ThemeVariables>,
 ) => {
   return Object.entries(DefaultVariables).reduce((acc, [group, vars]) => {
-    const theme:
-      | Record<keyof typeof DefaultVariables, typeof vars>
-      | undefined = (themeConfig as any)[group];
-    const darkTheme:
-      | Record<keyof typeof DefaultVariables, typeof vars>
-      | undefined = (darkThemeConfig as any)[group];
+    const theme: Record<keyof typeof DefaultVariables, typeof vars> | undefined = (
+      themeConfig as any
+    )[group];
+    const darkTheme: Record<keyof typeof DefaultVariables, typeof vars> | undefined = (
+      darkThemeConfig as any
+    )[group];
 
     return {
       ...acc,

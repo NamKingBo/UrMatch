@@ -1,15 +1,17 @@
 import React, { useEffect } from 'react';
 import { ActivityIndicator, View } from 'react-native';
-import { useTheme } from '@/hooks';
-import Brand from '@/components/Brand/Brand';
-import { setDefaultTheme } from '@/store/theme';
+
 import { ApplicationScreenProps } from 'types/navigation';
+
+import Brand from '@/components/Brand/Brand';
+import { useTheme } from '@/hooks';
+import { setDefaultTheme } from '@/store/theme';
 
 const Startup = ({ navigation }: ApplicationScreenProps) => {
   const { Layout, Gutters } = useTheme();
 
   const init = async () => {
-    await new Promise(resolve =>
+    await new Promise((resolve) =>
       setTimeout(() => {
         resolve(true);
       }, 2000),
